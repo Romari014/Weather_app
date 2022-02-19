@@ -25,7 +25,7 @@ module.exports = async function(city = '') {
         
 
         return {
-            weather: `'${data.name}: ${celsius.toFixed(0)}'`,
+            weather: `${data.name}: ${celsius.toFixed(0)}`,
             error: null
         }
     } catch(error) {
