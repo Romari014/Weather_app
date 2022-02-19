@@ -3,7 +3,6 @@ const bodyParser = require('body-parser')
 const weatherRequest = require('./requests/weather.request')
 
 const app = express()
-// 45493c89804830dc82bad199405933d3
 
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
@@ -13,9 +12,11 @@ app.get('/', (req, res) => {
     res.render('index')
 })
 
-app.post('/', (req, res) => {
+ app.post('/', async (req, res) => {
     const { city } = req.body
-    weatherRequest(city)
+    const { weather, error } = await weatherRequest(city)
+    console.log('error: ', error);
+    console.log('weather: ', weather);
     res.render('index')
 })
 
